@@ -1,0 +1,215 @@
+<!-- begin sub -->
+<div id="sub">
+<div class="inner">
+
+
+<dl>
+<dt>Categories</dt>
+<dd>
+<mt:TopLevelCategories>
+<mt:SubCatIsFirst>
+<ul>
+</mt:SubCatIsFirst>
+<mt:IfNonZero tag="mt:CategoryCount">
+<li><a href="<$mt:CategoryArchiveLink$>"<mt:IfNonEmpty tag="mt:CategoryDescription"> title="<$mt:CategoryDescription$>"</mt:IfNonEmpty>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a>
+<mt:Else>
+<li><$mt:CategoryLabel$>
+</mt:IfNonZero>
+<$mt:SubCatsRecurse$>
+</li>
+<mt:SubCatIsLast>
+</ul>
+</mt:SubCatIsLast>
+</mt:TopLevelCategories>
+</dd>
+</dl>
+
+
+<MTIf name="main_index">
+<dl>
+<dt>Recent Entries</dt>
+<dd>
+<ul>
+<MTEntries lastn="10">
+<li><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a></li>
+</MTEntries>
+</ul>
+</dd>
+</dl>
+</MTIf>
+
+
+<dl>
+<dt>Pages</dt>
+<dd>
+<mt:Pages no_folder="1" sort_by="title" sort_order="ascend">
+<mt:PagesHeader>
+<ul>
+</mt:PagesHeader>
+<li><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle$>"><$mt:PageTitle$></a></li>
+<mt:PagesFooter>
+</ul>
+</mt:PagesFooter>
+</mt:Pages>
+<mt:TopLevelFolders>
+<mt:FolderHeader>
+<ul>
+</mt:FolderHeader>
+<li><b><$mt:FolderLabel$></b>
+<mt:Pages sort_by="title" sort_order="ascend">
+<mt:PagesHeader>
+<ul>
+</mt:PagesHeader>
+<li><a href="<$mt:PagePermalink$>" title="<$mt:PageTitle$>"><$mt:PageTitle$></a></li>
+<mt:PagesFooter>
+</ul>
+</mt:PagesFooter>
+</mt:Pages>
+<$mt:SubFolderRecurse$>
+</li>
+<mt:FolderFooter>
+</ul>
+</mt:FolderFooter>
+</mt:TopLevelFolders>
+</dd>
+</dl>
+
+
+<dl>
+<dt>Archives</dt>
+<dd>
+<ul>
+<MTArchiveList archive_type="Monthly"><li><a href="<$MTArchiveLink$>"><$MTArchiveTitle$></a></li></MTArchiveList>
+<li><a href="<$MTLink template="アーカイブインデックス"$>">All Entries</a></li>
+</ul>
+</dd>
+</dl>
+
+<MTIf name="main_index">
+<dl>
+<dt>Comments</dt>
+<dd>
+<ul>
+<MTEntries recently_commented_on="5">
+<li><a href="<$MTEntryPermalink$>"><$MTEntryTitle$></a><br />
+<MTComments>
+┗<$MTCommentAuthor$> <$MTCommentDate format="%m月%d日"$><br />
+</MTComments>
+</li>
+</MTEntries>
+</ul>
+</dd>
+</dl>
+
+
+<dl>
+<dt>TrackBacks</dt>
+<dd>
+<ul>
+<MTPings lastn="5">
+<li>
+<a href="<$MTPingURL$>"><$MTPingTitle$></a><br />
+┗<$MTPingBlogName$></li>
+</MTPings>
+</ul>
+</dd>
+</dl>
+</MTIf>
+
+<dl>
+<dt>Tags</dt>
+<dd>
+<div class="module-tagcloud module">
+<div class="module-content">
+<ul class="module-list">
+<MTTags>
+<li class="module-list-item taglevel<$MTTagRank$>"><a href="<$MTTagSearchLink$>" title="タグ：<$MTTagName>の一覧"><$MTTagName$></a>
+</li>
+</MTTags>
+</ul>
+</div>
+</div>
+</dd>
+</dl>
+
+
+<MTIfNonZero tag="AssetCount">
+<MTAssets type="image" lastn="6">
+<MTSetVarBlock name="imgw">
+<$MTAssetProperty property="image_width"$>
+</MTSetVarBlock>
+<MTSetVarBlock name="imgh">
+<$MTAssetProperty property="image_height"$>
+</MTSetVarBlock>
+<MTAssetsHeader>
+<dl>
+<dt>Photos</dt>
+<dd><ul></MTAssetsHeader>
+<li class="item">
+<a href="<$MTAssetURL$>">
+<MTIf name="imgw" gt="$imgh">
+<img src="<$MTAssetThumbnailURL height="70"$>" alt="<$MTAssetLabel$>" title="<$MTAssetLabel$>" />
+<MTElse>
+<img src="<$MTAssetThumbnailURL width="70"$>" alt="<$MTAssetLabel$>" title="<$MTAssetLabel$>" />
+</MTElse>
+</MTIf>
+</a></li>
+<MTAssetsFooter></ul></dd>
+</dl>
+</MTAssetsFooter>
+</MTAssets>
+</MTIfNonZero>
+
+
+
+<dl>
+<dt>Feed</dt>
+<dd>
+<ul>
+<li><a href="<$MTLink template="feed_recent"$>">Atom</a></li>
+</ul>
+</dd>
+</dl>
+
+<MTBlogIfCCLicense>
+<dl>
+	<dt>Licenses</dt>
+<dd>
+<ul>
+<li><a href="<$MTBlogCCLicenseURL$>"><img alt="Creative Commons License" src="<$MTBlogCCLicenseImage$>" width="88" height="31" /></a><br />
+<a href="<$MTBlogCCLicenseURL$>">Creative Commons License</a>.</li>
+</ul>
+</dd>
+</dl>
+</MTBlogIfCCLicense>
+
+<dl>
+	<dt>Powered by </dt>
+<dd>
+<ul>
+<li><a href="http://www.sixapart.jp/movabletype/" title="Movable Type <$MTVersion$>">Movable Type <$MTVersion$></a></li>
+<li><a href="http://atstyle.biz/" title="@Style">@Style</a></li>
+</ul>
+</dd>
+</dl>
+
+
+<dl>
+<dt>Search</dt>
+<dd>
+<ul>
+<li>
+<form method="get" action="<$MTCGIPath$><$MTSearchScript$>">
+<input type="hidden" name="IncludeBlogs" value="<$MTBlogID$>" />
+<input type="hidden" name="limit" value="<$mt:SearchMaxResults$>" />
+<label for="search" accesskey="7">このサイトの検索</label><br />
+<input id="search" name="search" size="15" value="Search" tabindex="9" />
+<input type="submit" value="Search" tabindex="10" accesskey="z" />
+</form>
+</li>
+</ul></dd>
+</dl>
+
+</div>
+</div>
+<!-- /sub -->
